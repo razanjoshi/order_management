@@ -55,9 +55,15 @@
           <li>
             <a href="#best-part">Best Part</a>
           </li>
+          <li><%= link_to 'Menu', menus_path %>
           <li>
             <a href="#contact">Contact</a>
           </li>
+          <% if customer_signed_in? %>
+            <li>
+              <%= link_to 'Logout', destroy_customer_session_url %> 
+            </li>
+          <% end %>
         </ul>
       </div>
       <!-- /.navbar-collapse -->
@@ -94,14 +100,16 @@
         <h1>OrderOut</h1>
         <h3>An App for remembering everyone's food orders</h3>
         <hr class="intro-divider">
-        <ul class="list-inline intro-social-buttons">
-          <li>
-            <a href="/customers/sign_in" class="btn btn-default btn-lg"></i> <span class="network-name">Login</span></a>
-          </li>
-          <li>
-            <a href="/customers/sign_up" class="btn btn-default btn-lg"></i> <span class="network-name">Sign Up</span></a>
-          </li>
-        </ul>
+        <% unless customer_signed_in? %>
+          <ul class="list-inline intro-social-buttons">
+            <li>
+              <a href="/customers/sign_in" class="btn btn-default btn-lg"></i> <span class="network-name">Login</span></a>
+            </li>
+            <li>
+              <a href="/customers/sign_up" class="btn btn-default btn-lg"></i> <span class="network-name">Sign Up</span></a>
+            </li>
+          </ul>
+        <% end %>
       </div>
     </div>
   </div>
