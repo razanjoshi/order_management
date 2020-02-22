@@ -1,0 +1,59 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V15</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-form-title" style="background-image: url(../images/bg-01.jpg);">
+					<span class="login100-form-title-1">
+						Sign In
+					</span>
+				</div>
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+            <span class="label-input100">Email</span>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Enter username", class: "input100", type: "text" %>
+            <%# <input class="input100" type="text" name="username" placeholder="Enter username"> %>
+						<span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+            <span class="label-input100">Password</span>
+            <%= f.password_field :password, autocomplete: "current-password", class: "input100", type: "password", placeholder: "Enter password" %>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="flex-sb-m w-full p-b-30">
+						  <div class="contact100-form-checkbox">
+                <%= f.check_box :remember_me, id: "ckb1", name: "remember-me", type: "checkbox", class: "input-checkbox100" %>
+                <%= f.label :remember_me, class: "label-checkbox100", for: "ckb1" %>
+            </div>
+
+            <div>
+							<a href="#" class="txt1">
+								Forgot Password?
+							</a>
+						</div>
+          <% end %>
+
+          <div class="container-login100-form-btn">
+            <%= f.submit "Log in", class: "button login100-form-btn" %>
+          </div>
+        <% end %>
+			</div>
+      <%= render "devise/shared/links" %>
+		</div>
+	</div>
+	
+</body>
+</html>

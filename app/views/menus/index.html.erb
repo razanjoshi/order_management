@@ -1,0 +1,40 @@
+<body id="orders_index">
+<!-- Navigation -->
+
+<!-- <p id="notice"><%= notice %></p> -->
+<div class="gray_box">
+
+  <h1 class="index_listing">
+
+    <%# <%= @group_member.diner_name %>
+    <strong>Orders</strong>
+  </h1>
+
+
+<div class="table-repsonsive">
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th><strong>Restaurants</strong></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+    <tbody>
+        <% @menus.each do |order| %>
+          <tr>
+              <td class="col-md-2"><%= order.food_name %></td>
+              <%# <td class="col-md-2"><%= Money(order.price) %>
+              <td class="col-md-1"><%= link_to 'Show Order', order %></td>
+              <td class="col-md-1"><%= link_to 'Delete Order', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+    <%= link_to 'New Order', "" %> |
+    <%= link_to 'Back', "" %> |
+</div>
+</body>
